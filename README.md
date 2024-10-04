@@ -10,6 +10,8 @@ This is a template repository that you can use to try out the *flowR* extension 
 <br>
 </div>
 
+**After setting up the codespace, remember to click the button that I don't know what it says yet in the notification to get the extension up and running.**
+
 The *flowR* extension in the codespace connects to a remote *flowR* server, so you'll be able to do anything that you can do with the *flowR* extension on Desktop.
 
 ## Things to Try
