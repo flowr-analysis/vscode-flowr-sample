@@ -1,0 +1,9 @@
+{
+    "customizations": {
+        "codespaces": {
+            "openFiles": [
+                "example.R"
+            ]
+        }
+    }
+}
