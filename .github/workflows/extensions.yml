@@ -1,0 +1,29 @@
+on:
+  push:
+    branches: [main]
+jobs:
+  extensions:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Configure git user
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+      - name: Download flowR release
+        uses: robinraju/release-downloader@v1
+        with:
+          repository: flowr-analysis/vscode-flowr
+          latest: true
+          fileName: "*.vsix"
+      - name: Unpack flowR release
+        run: |
+          rm -r extensions/vscode-flowr
+          mkdir extensions/vscode-flowr
+          unzip -o *.vsix -d extensions/vscode-flowr
+          rm *.vsix
+      - name: Commit and push changes
+        run: |
+          git commit -a -m "Update flowR extension"
+          git push
