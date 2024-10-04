@@ -19,7 +19,7 @@ jobs:
           fileName: "*.vsix"
       - name: Unpack flowR release
         run: |
-          rm -r extensions/vscode-flowr
+          rm -rf extensions/vscode-flowr
           mkdir extensions/vscode-flowr
           unzip -o *.vsix -d extensions/vscode-flowr
           rm *.vsix
