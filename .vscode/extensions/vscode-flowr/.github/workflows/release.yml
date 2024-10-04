@@ -1,0 +1,78 @@
+name: release
+on:
+  push:
+    branches: [main]
+jobs:
+  test:
+    name: Test for release
+    if: startsWith(github.event.head_commit.message, '[release:minor]') ||
+      startsWith(github.event.head_commit.message, '[release:major]') ||
+      startsWith(github.event.head_commit.message, '[release:patch]')
+    uses: flowr-analysis/vscode-flowr/.github/workflows/test.yml@main
+
+  release:
+    runs-on: ubuntu-latest
+    needs: [test]
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.RELEASE_TOKEN }}
+          fetch-depth: 0
+      - name: Configure git user
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+
+      - name: Install node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 21.6.x
+          registry-url: "https://registry.npmjs.org/"
+      - name: Install vsce
+        run: npm install -g @vscode/vsce
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Bump version
+        id: version
+        run: |
+          step=$(echo "$MESSAGE" | sed -n -E 's/\[release:(patch|minor|major)].*/\1/p')
+          if [ -z "$step" ]; then
+            echo "fatal: Release step not found in commit message."
+            exit 1
+          fi
+
+          new_version=$(npm version "$step" -m "[skip ci] Release %s")
+          echo "::set-output name=release_tag::$new_version"
+        env:
+          # apparently, putting the message into an env variable first sanitizes it
+          # (see https://github.com/flowr-analysis/flowr/security/code-scanning/29)
+          MESSAGE: ${{ github.event.head_commit.message }}
+
+      - name: Package
+        run: vsce package
+
+      # but not the tag as it may be created by the release action
+      - name: Push version update commmit
+        run: git push
+
+      - name: Get changelog
+        id: changelog
+        run: |
+          new_version_tag=${{ steps.version.outputs.release_tag }}
+          new_version_num=${new_version_tag:1}
+          changelog=$(awk -v version="$new_version_num" '/# Version / {printit = $3 == version}; printit;' "CHANGELOG.md")
+          echo "::set-output name=body::$changelog"
+      - name: GitHub release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: vscode-flowr-*.vsix
+          token: ${{ secrets.RELEASE_TOKEN }}
+          tag_name: ${{ steps.version.outputs.release_tag }}
+          body: ${{ steps.changelog.outputs.body }}
+
+      - name: Marketplace
+        run: vsce publish
+        env:
+          VSCE_PAT: ${{ secrets.VSCODE_MARKETPLACE }}
