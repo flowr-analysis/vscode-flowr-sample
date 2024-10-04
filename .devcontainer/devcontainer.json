@@ -2,6 +2,7 @@
     "customizations": {
         "codespaces": {
             "openFiles": [
+                "README.md",
                 "example.R"
             ]
         }
