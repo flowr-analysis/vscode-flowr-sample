@@ -22,12 +22,12 @@ jobs:
           fileName: "*.vsix"
       - name: Cleanup previous flowR release
         run: |
-          rm -rf extensions/vscode-flowr
-          mkdir -p extensions/vscode-flowr
+          rm -rf .vscode/extensions/vscode-flowr
+          mkdir -p .vscode/extensions/vscode-flowr
       - name: Unpack flowR release
         run: |
           unzip -o *.vsix -d _unpacked
-          cp -a _unpacked/extension/. extensions/vscode-flowr
+          cp -a _unpacked/extension/. .vscode/extensions/vscode-flowr
           rm -r _unpacked *.vsix
       - name: Commit and push changes
         run: |
