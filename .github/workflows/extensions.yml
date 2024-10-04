@@ -20,7 +20,7 @@ jobs:
       - name: Unpack flowR release
         run: |
           rm -rf extensions/vscode-flowr
-          mkdir extensions/vscode-flowr
+          mkdir -p extensions/vscode-flowr
           unzip -o *.vsix -d extensions/vscode-flowr
           rm *.vsix
       - name: Commit and push changes
