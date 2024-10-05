@@ -2,7 +2,5 @@
     "vscode-flowr.server.host": "exia.informatik.uni-ulm.de/flowr/",
     "vscode-flowr.server.connectionType": "websocket-secure",
     "vscode-flowr.server.port": 443,
-    "workbench.editorAssociations": {
-        "README.md": "vscode.markdown.preview.editor"
-    }
+    "vscode-flowr.server.autoConnect": true
 }
