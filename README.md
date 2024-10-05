@@ -12,7 +12,7 @@ This is a template repository that you can use to try out the *flowR* extension 
 
 ## How to Use
 
-To set up your own *flowR* Sample Codespace, simply click the button above. The codespace will take a few seconds to set up. After the codespace has fully loaded, the *flowR* extension will connect to a remote *flowR* server, so you'll be able to do anything that you can do with the *flowR* extension on Desktop. The extension's current connection status will display in the bottom-right corner once it is up and running.
+To set up your own *flowR* Sample Codespace, simply click the button above. The codespace will take a few seconds to set up. After the codespace has fully loaded, the *flowR* extension will connect to a remote *flowR* server, so you'll be able to do anything that you can do with the *flowR* extension on Desktop.
 
 ## Things to Try
 
