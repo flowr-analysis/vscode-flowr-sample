@@ -6,6 +6,11 @@
                 "example.R",
                 "example-large.R"
             ]
+        },
+        "vscode": {
+            "extensions": [
+                "code-inspect.vscode-flowr"
+            ]
         }
     }
 }
