@@ -12,7 +12,7 @@ This is a template repository that you can use to try out the *flowR* extension 
 
 ## How to Use
 
-To set up your own *flowR* Sample Codespace, simply click the button above. The codespace will take a few seconds to set up. After the codespace has fully loaded, the *flowR* extension will connect to a remote *flowR* server, so you'll be able to do anything that you can do with the *flowR* extension on Desktop.
+To set up your own *flowR* sample codespace, simply click the button above. The codespace will take a few seconds to set up. After the codespace has fully loaded, the *flowR* extension will connect to a remote *flowR* server, so you'll be able to do anything that you can do with the *flowR* extension on Desktop.
 
 ## Things to Try
 
@@ -21,3 +21,12 @@ You can generate a [slice](https://github.com/flowr-analysis/flowr/wiki/Terminol
 You can also view the reconstruction of a piece of code based on the current slice. The **Show Current Slice in Editor (Reconstruct)** command opens a view next to the current editor.
 
 The extension has a lot more features to try! For a more extensive list, check out [the extension's README](https://github.com/flowr-analysis/vscode-flowr?tab=readme-ov-file#use).
+
+### Example Use-Cases
+
+This codespace contains the randomly selected [`Ipo_RI_Rcode.R`](Ipo_RI_Rcode.R) file you can use to play around - or use your own R files!
+
+1. Reviewing and comprehending existing R scripts
+2. Reusing a figure or data cleaning step of a publication
+3. Supporting maintenance and reproducibility
+4. Interactively understand the impact of parts while developing the script
