@@ -24,7 +24,8 @@ The extension has a lot more features to try! For a more extensive list, check o
 
 ### Example Use-Cases
 
-This codespace contains the randomly selected [`Ipo_RI_Rcode.R`](Ipo_RI_Rcode.R) file you can use to play around - or use your own R files!
+This codespace contains some randomly selected R files under [`./sample-files`](./sample-files/) you can use to play around - or use your own R files!
+We have only modified these files to contain a meta-informational comment at the top, pointing to the full record.
 
 1. Reviewing and comprehending existing R scripts
 2. Reusing a figure or data cleaning step of a publication
