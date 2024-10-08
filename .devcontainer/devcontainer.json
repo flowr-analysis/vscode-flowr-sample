@@ -3,7 +3,7 @@
         "codespaces": {
             "openFiles": [
                 "example.R",
-                "example-large.R"
+                "sample-files/habitat-interactions network.R"
             ]
         },
         "vscode": {
